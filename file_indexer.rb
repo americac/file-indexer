@@ -38,8 +38,13 @@ def read_file_data(input_file=nil)
 end
 
 def verify_input(input=nil)
-  raise "At least one input file is required." if input.nil?
-  true
+  if input.empty?
+    puts "Hey! At least one file needs to be passed as a argument:"
+    puts "./file_indexer.rb file_name_1 file_name_2"
+    false
+  else
+    true
+  end
 end
 
 if $0 == __FILE__

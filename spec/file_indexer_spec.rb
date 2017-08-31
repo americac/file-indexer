@@ -6,10 +6,6 @@ describe "File Indexer" do
   let(:empty_text_file) { "test_files/EmptyFile.txt" }
 
   describe "#verify_input" do
-    it "raises error if no argument set"do
-      expect{verify_input()}.to raise_error(RuntimeError)
-    end
-
     it "does not raise error if input file provided" do
       expect{verify_input([text_file_1])}.not_to raise_error
     end
