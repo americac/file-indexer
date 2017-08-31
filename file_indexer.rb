@@ -2,7 +2,7 @@
 
 def sort_by_count(hash=nil)
   raise "Nothing to sort." if hash.nil?
-  hash
+  sorted_hash = hash.sort{|a,b| a[1]<=>b[1]}
 end
 
 def read_file_data(input_file=nil)
@@ -28,10 +28,16 @@ def verify_input_file(input_file=nil)
 end
 
 if $0 == __FILE__
+  Limit = 10
   input_file = ARGV[0] ? ARGV[0] : nil
 
   verify_input_file(input_file)
   word_hash = read_file_data(input_file)
-  word_hash = sort_by_count(word_hash)
-  puts word_hash.inspect
+  word_array = sort_by_count(word_hash)
+
+  puts "Top #{Limit} words for #{input_file} are: "
+  Limit.times do
+    word = word_array.pop
+    puts "#{word.first} -> #{word.last}"
+  end
 end
