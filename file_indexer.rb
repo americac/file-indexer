@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 def display_results(results=nil, file_name=nil)
-  return false if results.nil?
+  return false if results.nil? || results.empty?
   limit = results.length < 10 ? results.length : 10
 
   print_string = "Top #{limit} words"
