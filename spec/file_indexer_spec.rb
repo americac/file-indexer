@@ -16,10 +16,6 @@ describe "File Indexer" do
   end
 
   describe "#read_file_data" do
-    it "raises error if file is empty" do
-      expect{read_file_data(empty_text_file)}.to raise_error(RuntimeError)
-    end
-
     it "returns a data hash" do
       expect(read_file_data(text_file_1)).to be_a(Hash)
     end
