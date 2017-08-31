@@ -5,6 +5,15 @@ def read_file_data(input_file=nil)
   word_hash = Hash.new
   File.readlines(input_file).each do |line|
     words = line.split(/\W+/)
+    next if words.empty?
+    words.each do |word|
+      next if word == ''
+      if word_hash.key?(word)
+	word_hash[word] += 1
+      else
+	word_hash[word] = 1
+      end
+    end
   end
   word_hash
 end
@@ -19,3 +28,4 @@ input_file = ARGV[0] ? ARGV[0] : nil
 
 verify_input_file(input_file)
 word_hash = read_file_data(input_file)
+puts word_hash.inspect
