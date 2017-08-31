@@ -5,7 +5,6 @@ def read_file_data(input_file=nil)
   word_hash = Hash.new
   File.readlines(input_file).each do |line|
     words = line.split(/\W+/)
-    puts words.inspect
   end
   word_hash
 end
