@@ -23,9 +23,8 @@ To run the tests run:
 rspec spec
 ```
 
-## Todos, time permitting
+## Todos....maybe
 
-* Add script usage message when file is missing or empty
 * Allow top word limit to be an argument, ie what if we want top 5 or top 15?
 
 
