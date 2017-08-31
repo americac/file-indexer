@@ -8,11 +8,14 @@ describe "File Indexer" do
       expect{verify_input_file()}.to raise_error(RuntimeError)
     end
 
-    it "raises error if file is empty"do
-      expect{verify_input_file(empty_text_file)}.to raise_error(RuntimeError)
-    end
     it "does not raise error if input file provided" do
       expect{verify_input_file(text_file_1)}.not_to raise_error
+    end
+  end
+
+  describe "#read_file_data" do
+    it "raises error if file is empty"do
+      expect{read_file_data(empty_text_file)}.to raise_error(RuntimeError)
     end
   end
 
