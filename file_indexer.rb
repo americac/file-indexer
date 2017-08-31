@@ -1,7 +1,17 @@
 #!/usr/bin/env ruby
 
-def display_results(results=nil)
+def display_results(results=nil, file_name=nil)
+  limit = 10
   raise "Nothing to display." if results.nil?
+
+  print_string = "Top #{limit} words"
+  print_string = file_name.nil? ? print_string+" are:" : print_string+" for #{file_name} are:"
+  puts print_string
+
+  limit.times do
+    word = results.pop
+    puts "#{word.first} -> #{word.last}"
+  end
 end
 
 def sort_by_count(hash=nil)
@@ -28,20 +38,16 @@ def read_file_data(input_file=nil)
 end
 
 def verify_input(input=nil)
-  raise "Input file is required." if input.nil?
+  raise "At least one input file is required." if input.nil?
+  true
 end
 
 if $0 == __FILE__
-  Limit = 10
-
-  verify_input(ARGV)
-
-  word_hash = read_file_data(input_file)
-  word_array = sort_by_count(word_hash)
-
-  puts "Top #{Limit} words for #{input_file} are: "
-  Limit.times do
-    word = word_array.pop
-    puts "#{word.first} -> #{word.last}"
+  if verify_input(ARGV)
+    ARGV.each do |input_file|
+      word_hash = read_file_data(input_file)
+      word_array = sort_by_count(word_hash)
+      display_results(word_array,input_file)
+    end
   end
 end
