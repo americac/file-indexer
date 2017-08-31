@@ -21,6 +21,10 @@ describe "File Indexer" do
     it "returns a data hash" do
       expect(read_file_data(text_file_1)).to be_a(Hash)
     end
+
+    it "hash should contain data" do
+      expect(read_file_data(text_file_1)).not_to be_empty
+    end
   end
 
 end
