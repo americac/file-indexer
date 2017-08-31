@@ -1,8 +1,7 @@
 require_relative "../file_indexer"
 describe "File Indexer" do
   let(:text_file_1) { "test_files/FannyLambert.txt" }
-  let(:text_file_2) { "test_files/Aventures.txt" }
-  let(:text_file_3) { "test_files/LaMediaNoche.txt" }
+  let(:text_file_2) { "test_files/TestWords.txt" }
   let(:empty_text_file) { "test_files/EmptyFile.txt" }
 
   describe "#verify_input" do
@@ -21,6 +20,11 @@ describe "File Indexer" do
 
     it "hash should contain data" do
       expect(read_file_data(text_file_1)).not_to be_empty
+    end
+
+    it "should not break up words" do
+      word_hash = read_file_data(text_file_2)
+      expect(word_hash.key?("don't")).to be true
     end
   end
 
