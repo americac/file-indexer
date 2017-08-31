@@ -41,10 +41,6 @@ describe "File Indexer" do
   end
 
   describe "#display_results" do
-    it "raises error if nothing is passed" do
-      expect{display_results()}.to raise_error(RuntimeError)
-    end
-
     it "prints 10 results" do
       sample_array = Array.new
       %w(toes my for scared I'm cold get will it and coming is winter ).each_with_index do |string, index|

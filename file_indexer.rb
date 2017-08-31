@@ -2,7 +2,6 @@
 
 def display_results(results=nil, file_name=nil)
   limit = 10
-  raise "Nothing to display." if results.nil?
 
   print_string = "Top #{limit} words"
   print_string = file_name.nil? ? print_string+" are:" : print_string+" for #{file_name} are:"
