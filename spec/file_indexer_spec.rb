@@ -1,20 +1,26 @@
 require_relative "../file_indexer"
 describe "File Indexer" do
   let(:text_file_1) { "test_files/FannyLambert.txt" }
+  let(:text_file_2) { "test_files/Aventures.txt" }
+  let(:text_file_3) { "test_files/LaMediaNoche.txt" }
   let(:empty_text_file) { "test_files/EmptyFile.txt" }
 
-  describe "#verify_input_file" do
+  describe "#verify_input" do
     it "raises error if no argument set"do
-      expect{verify_input_file()}.to raise_error(RuntimeError)
+      expect{verify_input()}.to raise_error(RuntimeError)
     end
 
     it "does not raise error if input file provided" do
-      expect{verify_input_file(text_file_1)}.not_to raise_error
+      expect{verify_input([text_file_1])}.not_to raise_error
+    end
+
+    it "can accept multiple files" do
+      expect{verify_input([text_file_1, text_file_2, text_file_3])}.not_to raise_error
     end
   end
 
   describe "#read_file_data" do
-    it "raises error if file is empty"do
+    it "raises error if file is empty" do
       expect{read_file_data(empty_text_file)}.to raise_error(RuntimeError)
     end
 
@@ -28,7 +34,7 @@ describe "File Indexer" do
   end
 
   describe "#sort_by_count" do
-    it "raises error if hash not passed"do
+    it "raises error if hash not passed" do
       expect{sort_by_count()}.to raise_error(RuntimeError)
     end
 
@@ -44,6 +50,11 @@ describe "File Indexer" do
 
       expect(sorted_array.length).to eq(word_hash.keys.count)
     end
+  end
 
+  describe "#display_results" do
+    it "raises error if nothing is passed" do
+      expect{display_results()}.to raise_error(RuntimeError)
+    end
   end
 end
