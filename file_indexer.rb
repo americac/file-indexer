@@ -15,6 +15,7 @@ def display_results(results=nil, file_name=nil)
 end
 
 def sort_by_count(hash=nil)
+  return false if hash.nil?
   sorted_hash = hash.sort{|a,b| a[1]<=>b[1]}
 end
 
