@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 
 def display_results(results=nil, file_name=nil)
-  limit = 10
+  return false if results.nil?
+  limit = results.length < 10 ? results.length : 10
 
   print_string = "Top #{limit} words"
   print_string = file_name.nil? ? print_string+" are:" : print_string+" for #{file_name} are:"
