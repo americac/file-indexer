@@ -27,4 +27,16 @@ describe "File Indexer" do
     end
   end
 
+  describe "#sort_by_count" do
+    it "raises error if hash not passed"do
+      expect{sort_by_count()}.to raise_error(RuntimeError)
+    end
+
+    it "returns a data hash" do
+      word_hash = read_file_data(text_file_1)
+
+      expect(sort_by_count(word_hash)).to be_a(Hash)
+    end
+
+  end
 end

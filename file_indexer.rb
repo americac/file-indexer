@@ -1,5 +1,10 @@
 #!/usr/bin/env ruby
 
+def sort_by_count(hash=nil)
+  raise "Nothing to sort." if hash.nil?
+  hash
+end
+
 def read_file_data(input_file=nil)
   raise "Input file is empty." if File.zero?(input_file.to_s)
   word_hash = Hash.new
@@ -27,5 +32,6 @@ if $0 == __FILE__
 
   verify_input_file(input_file)
   word_hash = read_file_data(input_file)
+  word_hash = sort_by_count(word_hash)
   puts word_hash.inspect
 end
