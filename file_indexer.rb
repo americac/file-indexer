@@ -3,6 +3,10 @@
 def read_file_data(input_file=nil)
   raise "Input file is empty." if File.zero?(input_file.to_s)
   word_hash = Hash.new
+  File.readlines(input_file).each do |line|
+    words = line.split(/\W+/)
+    puts words.inspect
+  end
   word_hash
 end
 
