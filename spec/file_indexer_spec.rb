@@ -1,6 +1,14 @@
 require_relative "../file_indexer"
-describe "#verify_input_file" do
-  it "raises error if no argument set"do
-    expect{verify_input_file()}.to raise_error(RuntimeError)
+describe "File Indexer" do
+  let(:text_file_1) { "test_files/FannyLambert.txt" }
+
+  describe "#verify_input_file" do
+    it "raises error if no argument set"do
+      expect{verify_input_file()}.to raise_error(RuntimeError)
+    end
+
+    it "does not raise error if input file provided" do
+      expect{verify_input_file(:text_file_1)}.not_to raise_error
+    end
   end
 end

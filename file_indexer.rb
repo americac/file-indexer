@@ -6,4 +6,3 @@ end
 
 input_file = ARGV[0] ? ARGV[0] : nil
 verify_input_file(input_file)
-
