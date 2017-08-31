@@ -17,13 +17,18 @@ bundle install
 * Input files are in plain text format
 
 ## Testing
-To run the tests simply run:
+To run the tests run:
 
 ```
 rspec spec
 ```
 
-
 ## Todos, time permitting
 
-* Add script usage message
+* Add script usage message when file is missing or empty
+* Allow top word limit to be an argument, ie what if we want top 5 or top 15?
+
+
+## Additional thoughts
+
+* Is memory/space a concern?
