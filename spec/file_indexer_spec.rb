@@ -35,14 +35,14 @@ describe "File Indexer" do
     it "returns a data hash" do
       word_hash = read_file_data(text_file_1)
 
-      expect(sort_by_count(word_hash)).to be_a(Hash)
+      expect(sort_by_count(word_hash)).to be_a(Array)
     end
 
     it "sorted hash should be same size as original" do
       word_hash = read_file_data(text_file_1)
-      sorted_hash = sort_by_count(word_hash)
+      sorted_array = sort_by_count(word_hash)
 
-      expect(sorted_hash.keys.count).to eq(word_hash.keys.count)
+      expect(sorted_array.length).to eq(word_hash.keys.count)
     end
 
   end
