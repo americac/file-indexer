@@ -22,11 +22,6 @@ describe "File Indexer" do
       expect(read_file_data(text_file_1)).not_to be_empty
     end
 
-    xit "should not break up words" do
-      word_hash = read_file_data(text_file_2)
-      expect(word_hash.key?("don't")).to be true
-    end
-
     it "should not have none word characters as words" do
       word_hash = read_file_data(text_file_2)
       expect(word_hash.key?(":")).to be false
