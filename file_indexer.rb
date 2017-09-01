@@ -26,7 +26,7 @@ class FileIndexer
     @results = @word_hash.sort{|a,b| a[1]<=>b[1]}
   end
 
-  def read_file_data
+  def file_data
     if File.zero?(@input_file.to_s)
       puts "WARNING: #{@input_file} is empty and will not be processed."
       false
