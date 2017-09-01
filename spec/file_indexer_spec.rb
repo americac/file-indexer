@@ -29,37 +29,45 @@ describe FileIndexer do
     end
   end
 
-  describe "#sort_by_count" do
+  describe "#sort_results" do
     it "returns an array" do
       fi = FileIndexer.new(text_file_1)
 
-      expect(fi.sort_by_count).to be_a(Array)
+      expect(fi.sort_results).to be_a(Array)
     end
 
     it "sorted array should be same size as original" do
       fi = FileIndexer.new(text_file_1)
       fi.read_file_data
-      fi.sort_by_count
+      fi.sort_results
 
       expect(fi.results.length).to eq(fi.word_hash.keys.count)
     end
   end
 
   describe "#display_results" do
-    it "prints 10 results if results are 10 or more" do
+    it "prints default 10 results if results are greater than 10 and limit not passed" do
       fi = FileIndexer.new(text_file_1)
       fi.read_file_data
-      fi.sort_by_count
+      fi.sort_results
 
       expect( fi.display_results).to eq(10)
     end
 
-    it "prints 5 results if only 8 results" do
+    it "prints less than default results if no limit set and results are less than default" do
       fi = FileIndexer.new(funny_file)
       fi.read_file_data
-      fi.sort_by_count
+      fi.sort_results
 
       expect( fi.display_results).to eq(8)
+    end
+
+    it "prints results for limit set" do
+      fi = FileIndexer.new(text_file_1)
+      fi.read_file_data
+      fi.sort_results
+
+      expect( fi.display_results(12)).to eq(12)
     end
   end
 end

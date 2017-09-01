@@ -17,7 +17,7 @@ if $0 == __FILE__
     ARGV.each do |input_file|
       fi = FileIndexer.new(input_file)
       fi.read_file_data
-      fi.sort_by_count
+      fi.sort_results
       fi.display_results
       puts
     end

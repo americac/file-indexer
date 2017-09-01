@@ -5,11 +5,13 @@ class FileIndexer
     @input_file = input_file
     @word_hash = Hash.new
     @results = Array.new
+    @default_limit = 10
   end
 
-  def display_results
-    return false if @results.nil?
-    limit = @results.length < 10 ? @results.length : 10
+  def display_results(limit = @default_limit)
+    return false if @results.empty?
+    limit = @default_limit unless limit.is_a?(Integer)
+    limit = @results.length < limit ? @results.length : limit
 
     puts "Top #{limit} words for #{@input_file} are:"
 
@@ -19,7 +21,7 @@ class FileIndexer
     end
   end
 
-  def sort_by_count
+  def sort_results
     return false if @word_hash.nil?
     @results = @word_hash.sort{|a,b| a[1]<=>b[1]}
   end
