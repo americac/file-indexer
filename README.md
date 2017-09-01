@@ -23,7 +23,8 @@ To run the tests run:
 rspec spec
 ```
 
-## Additional thoughts
+## Random thoughts
 * Allow top word limit to be an argument, ie what if we want top 5 or top 15?  Out of scope but just a thought.
-* Words with apostrophe are being broken up. I attempted to extract them out with breaking them up but that proved to be challenging and would be considered out of scope at this point.
+* Words with apostrophe are being broken up. I attempted to extract them out without breaking them up but that proved to be challenging and would be considered out of scope at this point.
 * Is memory/space a concern?
+* All tests pass
