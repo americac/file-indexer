@@ -15,8 +15,7 @@ end
 if $0 == __FILE__
   if verify_input(ARGV)
     ARGV.each do |input_file|
-      fi = FileIndexer.new(input_file)
-      fi.display_results
+      FileIndexer.new(input_file).display_results
       puts
     end
   end
