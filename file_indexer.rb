@@ -22,13 +22,12 @@ class FileIndexer
   end
 
   def sort_results
-    return false if @word_hash.nil?
+    return false if @word_hash.empty?
     @results = @word_hash.sort{|a,b| a[1]<=>b[1]}
   end
 
   def file_data
     if File.zero?(@input_file.to_s)
-      puts "WARNING: #{@input_file} is empty and will not be processed."
       false
     else
       File.readlines(@input_file).each do |line|
@@ -43,7 +42,7 @@ class FileIndexer
 	  end
 	end
       end
+      @word_hash
     end
-    @word_hash
   end
 end

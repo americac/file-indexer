@@ -23,20 +23,25 @@ describe FileIndexer do
       expect(fi.file_data.key?(":")).to be false
     end
 
-    it "should warn empty file will not be processed" do
-      expect{FileIndexer.new(empty_text_file).file_data}.to output("WARNING: #{empty_text_file} is empty and will not be processed.\n").to_stdout
-    end
+    it "returns false if file is empty" do
+      fi = FileIndexer.new(empty_text_file)
 
-    it "should warn empty file will not be processed" do
-      expect{FileIndexer.new(empty_text_file).file_data}.to output("WARNING: #{empty_text_file} is empty and will not be processed.\n").to_stdout
+      expect(fi.file_data).to be false
     end
   end
 
   describe "#sort_results" do
     it "returns an array" do
       fi = FileIndexer.new(text_file_1)
+      fi.file_data
 
       expect(fi.sort_results).to be_a(Array)
+    end
+
+    it "returns false if file is empty" do
+      fi = FileIndexer.new(text_file_1)
+
+      expect(fi.sort_results).to be false
     end
 
     it "sorted array should be same size as original" do
