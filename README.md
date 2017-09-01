@@ -15,14 +15,13 @@ bundle install
 ## Assumptions
 * Ruby is installed on machine running the script and tests
 * Input files are in plain text format
-* The script calling the class is a stand alone script/tool
 
 ## Files and directories
 
-* file_indexer.rb -  FileIndexer class
-* index_file.rb - script used to parse one or more text files
-* test_files - directory containing several sample input files
-* spec - text directory
+* *file_indexer.rb* -  FileIndexer class
+* *index_file.rb* - script used to parse one or more text files
+* *test_files* - directory containing several sample input files
+* *spec* - text directory
 
 ## Testing
 To run the tests run:
