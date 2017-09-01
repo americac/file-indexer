@@ -51,9 +51,11 @@ Sample files can be found in the 'test_files' directory
 
 ## Class usage
 
-* the file needs to be read first by calling *read_file_data*
-* sort the data by calling *sort_result*
-* print result byt calling *display_result*
+To successfully collect the file data and display the top 10 results the methods should be called in this order:
+
+1. *read_file_data* - reads the data file and stores in @word_hash
+2. *sort_result* - sorts the hash and stores sorted data in @results as an Array
+3. *display_result* - displays the top 10 results
 
 Example:
 
