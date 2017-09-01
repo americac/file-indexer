@@ -31,7 +31,7 @@ To run the tests run:
 rspec
 ```
 
-## Script Usage
+## Script usage
 
 To run the parsing script run:
 
