@@ -4,7 +4,7 @@
 The following are requirements to successfully run the script and related tests:
 
 * ruby 2.3.1
-* rspec
+* RSpec 3.6
 
 Reminder: run bundler before running the script or the tests:
 
