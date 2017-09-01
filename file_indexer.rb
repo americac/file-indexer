@@ -3,56 +3,60 @@ class FileIndexer
 
   def initialize(input_file)
     @input_file = input_file
-    @word_hash = Hash.new
+    @word_hash = file_data
     @results = Array.new
     @default_limit = 10
   end
 
-  def get_top_results(limit = nil)
-    file_data
-    if file_data
+  def top_results(limit = @default_limit)
+    return false if @results.empty?
+    limit = @default_limit unless limit.is_a?(Integer)
+    limit = @results.length < limit ? @results.length : limit
+    @results[0..limit -1]
+  end
+
+  def display_top_results(limit = nil)
+    if @word_hash
       sort_results
-      display_results(limit)
+      my_results = top_results(limit)
+      print_top_results(my_results)
     else
       false
     end
   end
 
-  def display_results(limit = @default_limit)
-    return false if @results.empty?
-    limit = @default_limit unless limit.is_a?(Integer)
-    limit = @results.length < limit ? @results.length : limit
-
-    puts "Top #{limit} words for #{@input_file} are:"
-
-    limit.times do
-      word = @results.pop
-      puts "#{word.first} -> #{word.last}"
+  def print_top_results(results)
+    puts "Top #{results.length} words for #{@input_file} are:"
+    results.each do |word, count|
+      puts "#{word} -> #{count}"
     end
   end
 
   def sort_results
-    return false if @word_hash.empty?
-    @results = @word_hash.sort{|a,b| a[1]<=>b[1]}
+    return false unless @word_hash
+    @results = @word_hash.sort{|b,a| a[1]<=>b[1]}
   end
 
   def file_data
     if File.zero?(@input_file.to_s)
       false
+    elsif @word_hash
+      @word_hash
     else
+      word_hash = Hash.new
       File.readlines(@input_file).each do |line|
 	words = line.split(/\W+/)
 	next if words.empty?
 	words.each do |word|
 	  next if word == ''
-	  if @word_hash.key?(word)
-	    @word_hash[word] += 1
+	  if word_hash.key?(word)
+	    word_hash[word] += 1
 	  else
-	    @word_hash[word] = 1
+	    word_hash[word] = 1
 	  end
 	end
       end
-      @word_hash
+      word_hash
     end
   end
 end

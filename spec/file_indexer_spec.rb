@@ -28,6 +28,7 @@ describe FileIndexer do
 
       expect(fi.file_data).to be false
     end
+
   end
 
   describe "#sort_results" do
@@ -39,63 +40,68 @@ describe FileIndexer do
     end
 
     it "returns false if file is empty" do
-      fi = FileIndexer.new(text_file_1)
+      fi = FileIndexer.new(empty_text_file)
 
       expect(fi.sort_results).to be false
     end
+  end
 
-    it "sorted array should be same size as original" do
+  describe "#top_results" do
+    it "returns false if results is empty" do
+      fi = FileIndexer.new(empty_text_file)
+
+      expect(fi.top_results).to be false
+    end
+
+    it "returns array of data" do
       fi = FileIndexer.new(text_file_1)
-      fi.file_data
       fi.sort_results
 
-      expect(fi.results.length).to eq(fi.word_hash.keys.count)
+      expect(fi.top_results.length).to be > 0
     end
   end
 
-  describe "#display_results" do
+  describe "#print_top_results" do
     it "prints default 10 results if results are greater than 10 and limit not passed" do
       fi = FileIndexer.new(text_file_1)
-      fi.file_data
       fi.sort_results
 
-      expect( fi.display_results).to eq(10)
+      expect( fi.print_top_results(fi.top_results).length).to eq(10)
     end
 
     it "prints less than default results if no limit set and results are less than default" do
       fi = FileIndexer.new(funny_file)
-      fi.file_data
       fi.sort_results
 
-      expect( fi.display_results).to eq(8)
+      expect( fi.print_top_results(fi.top_results).length).to eq(8)
     end
 
     it "prints results for limit set" do
       fi = FileIndexer.new(text_file_1)
-      fi.file_data
       fi.sort_results
+      results = fi.top_results(12)
 
-      expect( fi.display_results(12)).to eq(12)
+      expect( fi.print_top_results(results).length).to eq(12)
     end
   end
 
-  describe "#get_top_results" do
+  describe "#display_top_results" do
     it "prints default 10 results if results are greater than 10 and limit not passed" do
       fi = FileIndexer.new(text_file_1)
 
-      expect( fi.get_top_results).to eq(10)
+      expect( fi.display_top_results.length).to eq(10)
     end
 
     it "prints less than default results if no limit set and results are less than default" do
       fi = FileIndexer.new(funny_file)
 
-      expect( fi.get_top_results).to eq(8)
+      expect( fi.display_top_results.length).to eq(8)
     end
 
     it "prints results for limit set" do
       fi = FileIndexer.new(text_file_1)
 
-      expect( fi.get_top_results(12)).to eq(12)
+      expect( fi.display_top_results(12).length).to eq(12)
     end
   end
 end
