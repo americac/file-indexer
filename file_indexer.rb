@@ -26,7 +26,7 @@ def read_file_data(input_file=nil)
   else
     word_hash = Hash.new
     File.readlines(input_file).each do |line|
-      words = line.split(' ')
+      words = line.split(/\W+/)
       next if words.empty?
       words.each do |word|
 	next if word == ''
