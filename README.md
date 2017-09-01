@@ -15,7 +15,6 @@ bundle install
 ## Assumptions
 * Ruby is installed on machine running the script and tests
 * Input files are in plain text format
-* FileIndexer is going to be used for sorting plain text files
 * The script using/calling the class will take care of error handling, class methods will return false when something is not right
 
 ## Files and directories
@@ -77,4 +76,4 @@ The class has several methods which take care of specific tasks. I tried to keep
 ## Random thoughts
 * naming convention of methods and variables could be better
 * Words with apostrophe are being broken up, this could be improved on
-* Is memory/space a concern?
+* local memory/space a concern...yes?
