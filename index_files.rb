@@ -15,7 +15,10 @@ end
 if $0 == __FILE__
   if verify_input(ARGV)
     ARGV.each do |input_file|
-      FileIndexer.new(input_file).display_results
+      fi = FileIndexer.new(input_file)
+      fi.read_file_data
+      fi.sort_by_count
+      fi.display_results
       puts
     end
   end
