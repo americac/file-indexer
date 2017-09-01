@@ -78,4 +78,24 @@ describe FileIndexer do
       expect( fi.display_results(12)).to eq(12)
     end
   end
+
+  describe "#get_top_results" do
+    it "prints default 10 results if results are greater than 10 and limit not passed" do
+      fi = FileIndexer.new(text_file_1)
+
+      expect( fi.get_top_results).to eq(10)
+    end
+
+    it "prints less than default results if no limit set and results are less than default" do
+      fi = FileIndexer.new(funny_file)
+
+      expect( fi.get_top_results).to eq(8)
+    end
+
+    it "prints results for limit set" do
+      fi = FileIndexer.new(text_file_1)
+
+      expect( fi.get_top_results(12)).to eq(12)
+    end
+  end
 end

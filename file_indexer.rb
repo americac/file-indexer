@@ -8,6 +8,16 @@ class FileIndexer
     @default_limit = 10
   end
 
+  def get_top_results(limit = nil)
+    file_data
+    if file_data
+      sort_results
+      display_results(limit)
+    else
+      false
+    end
+  end
+
   def display_results(limit = @default_limit)
     return false if @results.empty?
     limit = @default_limit unless limit.is_a?(Integer)

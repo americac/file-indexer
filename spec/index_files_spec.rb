@@ -1,6 +1,7 @@
 require_relative "../index_files"
 describe "index_files.rb" do
   let(:text_file_1) { "test_files/FannyLambert.txt" }
+  let(:empty_file) { "test_files/EmptyFile.txt" }
 
   describe "#read_file_data" do
     it "displays usage if no arguments are passed" do
