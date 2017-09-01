@@ -15,11 +15,11 @@ class FileIndexer
     @results[0..limit -1]
   end
 
-  def display_top_results(limit = nil)
+  def display_top_results(limit = @default_limit)
     if @word_hash
       sort_results
       my_results = top_results(limit)
-      print_top_results(my_results)
+      my_results ? print_top_results(my_results) : false
     else
       false
     end
