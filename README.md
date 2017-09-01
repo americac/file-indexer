@@ -6,7 +6,7 @@ The following are requirements to successfully run the script and related tests:
 * ruby 2.3.1
 * rspec
 
-Make sure to run the following before running the script or the tests:
+Reminder: run bundler before running the script or the tests:
 
 ```
 bundle install
@@ -15,27 +15,34 @@ bundle install
 ## Assumptions
 * Ruby is installed on machine running the script and tests
 * Input files are in plain text format
-* The file indexer is a stand alone script/tool
+* The script calling the class is a stand alone script/tool
+
+## Files and directories
+
+* file_indexer.rb -  FileIndexer class
+* index_file.rb - script used to parse one or more text files
+* test_files - directory containing several sample input files
+* spec - text directory
 
 ## Testing
 To run the tests run:
 
 ```
-rspec spec
+rspec
 ```
 
 ## Usage
 
-To run the script run:
+To run the parsing script run:
 
 ```
-./file_indexer.rb file_name_1
+./index_files.rb file_name_1
 ```
 
 The script can accept multiple files as arguments:
 
 ```
-./file_indexer.rb file_name_1 file_name_2
+./index_files.rb file_name_1 file_name_2
 ```
 
 Sample files can be found in the 'test_files' directory
