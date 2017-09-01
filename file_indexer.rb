@@ -21,7 +21,7 @@ end
 
 def read_file_data(input_file=nil)
   if File.zero?(input_file.to_s)
-    puts "WARNING: #{input_file} is empty and will not be processed.\n"
+    puts "WARNING: #{input_file} is empty and will not be processed."
     false
   else
     word_hash = Hash.new
@@ -45,6 +45,7 @@ def verify_input(input=nil)
   if input.empty?
     puts "Hey! At least one file needs to be passed as a argument:"
     puts "./file_indexer.rb file_name_1 file_name_2"
+    puts
     false
   else
     true
@@ -58,6 +59,7 @@ if $0 == __FILE__
       next unless word_hash
       word_array = sort_by_count(word_hash)
       display_results(word_array,input_file)
+      puts
     end
   end
 end
