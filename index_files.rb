@@ -16,7 +16,7 @@ if $0 == __FILE__
   if verify_input(ARGV)
     ARGV.each do |input_file|
       fi = FileIndexer.new(input_file)
-      results = fi.get_top_results
+      results = fi.display_top_results
       puts "WARNING: #{input_file} is empty and was not processed." unless results
       puts
     end
